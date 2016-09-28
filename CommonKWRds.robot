@@ -48,4 +48,3 @@ Get device name
 Custome scroll down
     [Arguments]     ${dy}=10
     ${output}=      run     adb shell input trackball roll 0 ${dy}
-
