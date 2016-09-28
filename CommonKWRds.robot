@@ -47,9 +47,9 @@ Get device name
 
 Custome scroll down
     [Arguments]     ${dy}=10
-    ${output}=      run     adb shell input swipe 0 200 0 650 100
+    ${output}=      run     adb shell input swipe 0 220 0 650 100
 
 Custome scroll up
     [Arguments]     ${dy}=10
-    ${output}=      run     adb shell input swipe 0 650 0 200 100
+    ${output}=      run     adb shell input swipe 0 650 0 220 100
 
