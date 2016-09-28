@@ -28,14 +28,19 @@ ${btn_share}=       xpath=//*[contains(@resource-id,'buttonDefaultNeutral')]
 ${txt_wifi_ssid}=       xpath=//*[contains(@resource-id,'txt_wifi_ssid')]
 ${txt_guest_wifi_ssid}=     xpath=//*[contains(@resource-id,'txt_guest_wifi_ssid')]
 ${guest wifi detail title}=        xpath=//*[@resource-id='com.orange.airboxflybox:id/title']
+${message title}=       xpath=//*[@resource-id='com.orange.airboxflybox:id/title']
 ${btn_guest_wifi_display_key}=      xpath=//*[contains(@resource-id,'btn_guest_wifi_display_key')]
+${switch_roaming}=      xpath=//*[contains(@resource-id,'switch_roaming')]
+${btn_Confirm}=     xpath=//*[contains(@resource-id,'buttonDefaultPositive')]
+${btn_Cancel}=      xpath=//*[contains(@resource-id,'buttonDefaultNeutral')]
+${romaing message content}=     xpath=//*[contains(@resource-id,'content')]
 
 #Labels
 ${Mobile data traffic}=     Mobile data traffic
 ${Monthly data traffic}=        Monthly data traffic
 ${national label}=      National
 ${roaming label}=       Roaming
-
+${roaming switching message}=       Switching off data roaming will not allow you to use data service abroad Using data services while roaming may be costly !
 *** Keywords ***
 Setup For DASHBOARD Tests
     Launch air box App
@@ -43,6 +48,7 @@ Setup For DASHBOARD Tests
     click element  ${dashboardlocator}
     #custome scroll up
 *** Test Cases ***
+
 Check connection type
     ${status}=     get element attribute     ${dashboardlocator}    selected
     log         ${status}
@@ -142,3 +148,34 @@ Test guest wi-fi display key
     ${key for AirBox}=      get element attribute       ${txt_wifi_key}     text
     should match regexp     ${txt_wifi_key}     \\w+
     click element       ${btn_close}
+
+
+Test Toggle Roaming and confirm
+#   switch_roaming
+     [Teardown]    custome scroll up
+     ${output}=      run     adb shell input swipe 0 682 20 202 100
+     sleep  1s
+     ${switch roaming status}=      get element attribute       ${switch_roaming}       checked
+     log    switch roaming is ${switch roaming status}
+     click element      ${switch_roaming}
+     ${content}=        get element attribute       ${romaing message content}      text
+     should contain  ${roaming switching message}   ${content}
+     wait until page contains element       ${message title}
+     click element      ${btn_confirm}
+     wait until page does not contain element       ${btn_Confirm}
+     ${switch roaming status after}=      get element attribute       ${switch_roaming}       checked
+     should not be equal        ${switch roaming status}        ${switch roaming status after}
+
+Test Toggle Roaming and cancel
+#   switch_roaming
+     [Teardown]    custome scroll up
+     ${output}=      run     adb shell input swipe 0 682 20 202 100
+     sleep  1s
+     ${switch roaming status}=      get element attribute       ${switch_roaming}       checked
+     log    switch roaming is ${switch roaming status}
+     click element      ${switch_roaming}
+     wait until page contains element       ${message title}
+     click element      ${btn_cancel}
+     wait until page does not contain element       ${btn_Confirm}
+     ${switch roaming status after}=      get element attribute       ${switch_roaming}       checked
+     should be equal        ${switch roaming status}        ${switch roaming status after}
