@@ -1,4 +1,4 @@
-*** Settings ***
+	*** Settings ***
 Library     OperatingSystem
 Library     String
 Library     AppiumLibrary
@@ -7,8 +7,8 @@ Resource    CommonKWRds.robot
 Suite Setup  Setup For DASHBOARD Tests
 Suite Teardown  Close air box App
 *** Variables ***
-${dashboardlocator}=        xpath=//*[@text='DASHBOARD']
-${nwtypelocator}=       xpath=//*[@resource-id='${pkgName}:id/txt_network_type']
+${dashboardlocator}=		xpath=//*[@text='DASHBOARD']
+${nwtypelocator}=		xpath=//*[@resource-id='${pkgName}:id/txt_network_type']
 ${bataryLevelLocator}=      xpath=//*[contains(@resource-id,'txt_battery_level')]
 ${connectionTimeLocator}=      xpath=//*[contains(@resource-id,'txt_data_traffic_since_value')]
 ${dataUsageLocator}=      xpath=//*[contains(@resource-id,'txt_data_traffic_value')]
@@ -63,13 +63,14 @@ Check batarry level
     should match regexp     ${bataryLevel}       \\d+%
 
 Check data traffic
+    [Tags]      fordebug
     ${dataTrafficTime}=     get element attribute       ${connectionTimeLocator}       text
     log     ${dataTrafficTime}
     ${dataUsage}=       get element attribute       ${dataUsageLocator}     text
     log     ${dataUsage}
     ${qoutaUnit}=       get element attribute       ${qoutaUnitLocator}     text
     log     ${qoutaUnit}
-    should match regexp  ${dataTrafficTime}     \\d+d\\s\\d+h
+    should match regexp  ${dataTrafficTime}     [\\d+\\w+]{1,3}
     should match regexp  ${dataUsage}       [\\d*\\.*\\d*]+
     should match regexp  ${qoutaUnit}       [KMG]{1}B
     page should contain text    ${Mobile data traffic}
@@ -100,10 +101,13 @@ Test more details roaming
     wait until page contains        DASHBOARD       10s
 
 Test wi-fi display key
+    [Teardown]    custome scroll up
     ${wi-fi-ssid}=      get element attribute       ${txt_wifi_ssid}        text
+    ${output}=      run     adb shell input swipe 0 682 20 202 100
     click element       ${btn_wifi_display_key}
-    wait until page contains element        ${wi-fi-ssid}
-    page should contain text        ${txt_wifi_ssid}
+    sleep       1s
+    #wait until page contains element        ${txt_wifi_ssid}        5s
+    page should contain text        ${wi-fi-ssid}
     ${key for AirBox}=      get element attribute       ${txt_wifi_key}     text
     should match regexp     ${txt_wifi_key}     \\w+
     click element       ${btn_close}
