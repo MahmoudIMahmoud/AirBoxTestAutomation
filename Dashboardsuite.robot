@@ -1,14 +1,14 @@
-	*** Settings ***
-Library     OperatingSystem
-Library     String
-Library     AppiumLibrary
-Resource    repository.robot
-Resource    CommonKWRds.robot
+*** Settings ***
+Library         OperatingSystem
+Library         String
+Library         AppiumLibrary  run_on_failure=Log Source
+Resource        repository.robot
+Resource        CommonKWRds.robot
 Suite Setup  Setup For DASHBOARD Tests
 Suite Teardown  Close air box App
 *** Variables ***
-${dashboardlocator}=		xpath=//*[@text='DASHBOARD']
-${nwtypelocator}=		xpath=//*[@resource-id='${pkgName}:id/txt_network_type']
+${dashboardlocator}=		xpath=//*[@text='${DASHBOARD}']
+${nwtypelocator}=		xpath=//*[contains(@resource-id,'txt_network_type')]
 ${bataryLevelLocator}=      xpath=//*[contains(@resource-id,'txt_battery_level')]
 ${connectionTimeLocator}=      xpath=//*[contains(@resource-id,'txt_data_traffic_since_value')]
 ${dataUsageLocator}=      xpath=//*[contains(@resource-id,'txt_data_traffic_value')]
@@ -27,24 +27,18 @@ ${btn_close}=       xpath=//*[contains(@resource-id,'buttonDefaultPositive')]
 ${btn_share}=       xpath=//*[contains(@resource-id,'buttonDefaultNeutral')]
 ${txt_wifi_ssid}=       xpath=//*[contains(@resource-id,'txt_wifi_ssid')]
 ${txt_guest_wifi_ssid}=     xpath=//*[contains(@resource-id,'txt_guest_wifi_ssid')]
-${guest wifi detail title}=        xpath=//*[@resource-id='com.orange.airboxflybox:id/title']
-${message title}=       xpath=//*[@resource-id='com.orange.airboxflybox:id/title']
+${guest wifi detail title}=        xpath=//*[contains(@text,'${Key for Orange}')]
+${message title}=       xpath=//*[contains(@text,'${Warning}')]
 ${btn_guest_wifi_display_key}=      xpath=//*[contains(@resource-id,'btn_guest_wifi_display_key')]
 ${switch_roaming}=      xpath=//*[contains(@resource-id,'switch_roaming')]
 ${btn_Confirm}=     xpath=//*[contains(@resource-id,'buttonDefaultPositive')]
 ${btn_Cancel}=      xpath=//*[contains(@resource-id,'buttonDefaultNeutral')]
 ${romaing message content}=     xpath=//*[contains(@resource-id,'content')]
 
-#Labels
-${Mobile data traffic}=     Mobile data traffic
-${Monthly data traffic}=        Monthly data traffic
-${national label}=      National
-${roaming label}=       Roaming
-${roaming switching message}=       Switching off data roaming will not allow you to use data service abroad Using data services while roaming may be costly !
 *** Keywords ***
 Setup For DASHBOARD Tests
     Launch air box App
-    Do Login    admin     DASHBOARD
+    Do Login    admin     ${DASHBOARD}
     click element  ${dashboardlocator}
     #custome scroll up
 *** Test Cases ***
@@ -53,9 +47,10 @@ Check connection type
     ${status}=     get element attribute     ${dashboardlocator}    selected
     log         ${status}
     should be equal     ${status}       true
+    Wait Until Page Contains Element    ${nwtypelocator}    10s
     ${nwtype}     get element attribute     ${nwtypelocator}      text
     log     ${nwtype}
-    should contain      3G 4G      ${nwtype}
+    should contain      3G|4G|EDGE      ${nwtype}
     #scroll      xpath=//*[@text='Mobile connection']        xpath=//*[@text='Wi-Fi']
 
 Check batarry level
@@ -87,7 +82,7 @@ Test more details national
     ${txt_national_upload}=     get element attribute       ${txt_national_uploadLocator}       text
     should match regexp     ${txt_national_upload}        [\\d*\\.*\\d*]+\\s[MKG]*B
     click element   ${buttonCloseLocator}
-    wait until page contains        DASHBOARD       10s
+    wait until page contains        ${DASHBOARD}       10s
 
 Test more details roaming
     click element       ${moreDetailsLocator}
@@ -98,12 +93,14 @@ Test more details roaming
     should match regexp     ${txt_international_download}       [\\d*\\.*\\d*]+\\s[MKG]*B
     ${txt_international_upload}=        get element attribute       ${txt_international_uploadLocator}      text
     click element   ${buttonCloseLocator}
-    wait until page contains        DASHBOARD       10s
+    wait until page contains        ${DASHBOARD}       10s
 
 Test wi-fi display key
     [Teardown]    custome scroll up
     ${wi-fi-ssid}=      get element attribute       ${txt_wifi_ssid}        text
-    ${output}=      run     adb shell input swipe 0 682 20 202 100
+    ${output}=      run     adb shell input swipe 0 300 0 200 100
+    #Scroll Down    ${btn_wifi_display_key}
+    sleep        1s
     click element       ${btn_wifi_display_key}
     sleep       1s
     #wait until page contains element        ${txt_wifi_ssid}        5s
@@ -116,8 +113,8 @@ Test wi-fi display share
     click element       ${btn_wifi_display_key}
     wait until page contains element        ${txt_wifi_key}
     click element       ${btn_share}
-    wait until page contains    Share using
-    page should contain text    Share using
+    wait until page contains    ${Share using}
+    page should contain text    ${Share using}
     custome keyboard back
     #click element       ${btn_close}
     page should contain element     ${dashboardlocator}
@@ -129,8 +126,8 @@ Test guest wi-fi display share
     click element       ${btn_wifi_display_key}
     wait until page contains element        ${txt_wifi_key}
     click element       ${btn_share}
-    wait until page contains    Share using
-    page should contain text    Share using
+    wait until page contains        ${Share using}
+    page should contain text        ${Share using}
     custome keyboard back
     #click element       ${btn_close}
     page should contain element     ${dashboardlocator}
