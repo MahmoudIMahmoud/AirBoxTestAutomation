@@ -1,0 +1,37 @@
+1- Why do I need to log with an admin login/password and for which actions?
+
+Admin login/password provides extra security to access to Airbox Auto advanced features.
+
+Specific information, specific functions like settings and Wi-Fi network activation will be exclusively available to the administrator thanks to theses credentials.
+
+2- How can I see Wi-Fi credentials?
+
+Wi-Fi credentials are written in the bottom of the device or on the stickers provided in the box. You can also see and change them through the application.
+
+3- How can I share my Wi-Fi connexion?
+
+You can share your Wi-Fi credentials with trusted people so they can connect to the Airbox anytime it is switched on directly from the dashboard of the application.
+
+4- What actions are available for other users connected to Airbox Auto's Wi-Fi network?
+
+All users connected to the Airbox Auto can have access to the application as guests. Advanced features like settings and Wi-Fi network management are protected with specific login and password.
+
+5- How can I modify device default settings, Wi-Fi credential and consumption thresholds ?
+
+You should be connected with admin login/password to modify default settings. Then you can modify settings in the settings corner of the application.
+
+6- Why Airbox Auto receives messages and what is message transfer function?
+
+Airbox Auto can receive SMS messages to its SIM card phone number. This messages can come from anyone knowing the number but will mainly come from your operator to provide you with information and alert messages (like consumption tracking and bill shock).
+
+You can read and answer your messages received in your Airbox Auto in the application.
+
+7- What is the utility of the USB Port ?
+
+1) If your device is plugged in the car, you can use the USB Port to charge any other USB-linked device
+
+2) You can also use your Airbox Auto out of the car thanks to this USB port (see comment below)
+
+8- Can I use my Airbox Auto in a foreign country?
+
+Yes because Airbox Auto is a multi-country device. Check data plan with your provider to see if the function is available and roaming billing conditions. Alert message can be displayed on application whenever you are in roaming.

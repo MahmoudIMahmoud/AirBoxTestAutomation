@@ -4,10 +4,15 @@ Library     String
 Library     AppiumLibrary
 Library     Collections
 Resource    repository.robot
+*** Variables ***
+${AppiumURL}                            http://localhost:4723/wd/hub
+${passwdlocator}                        xpath=//*[contains(@resource-id,'edt_password')]
+${appfile}                              airbox-espagne.apk
+${device}                               29bfe0b7
 *** Keywords ***
 Do Login
     [Arguments]     ${passwd}   ${assertionstr}
-    wait until page contains element  ${loginasguestbtn}   10s
+    wait until page contains element  ${passwdlocator}   10s
     clear text  ${passwdlocator}
     input text  ${passwdlocator}   ${passwd}
     custome keyboard done
@@ -17,24 +22,27 @@ Do Login
 Launch Air Box App
     ${connectedDev}=    get device name
     log to console      ${connectedDev}
-    Open Application  ${REMOTE_URL}   platformName=Android  deviceName=${connectedDev}  app=${CURDIR}/Apps/app-espagne-debug.apk
+    ${connectedDev}=    Set Variable        ${device}
+    ${apk path}         Set Variable        ${CURDIR}${/}Apps${/}${appfile}
+    Log To Console      app path:${apk path}
+    Open Application  ${AppiumURL}   platformName=Android  deviceName=${connectedDev}  app=${apk path}
 
 ADB Launch App
-    ${output}       run  adb shell am start -n ${pkgName}/${pkgName}.ui.LoginActivity
+    ${output}       run  adb -s ${device} shell am start -n ${pkgName}/${pkgName}.ui.LoginActivity
 
 Close air box App
-    ${output}       run  adb shell am force-stop ${pkgName}
+    ${output}       run  adb -s ${device} shell am force-stop ${pkgName}
     close application
     log to console  finished
 
 Custome keyboard done
     sleep  1s
-    ${output}       run  adb shell input keyevent 66 keyevent 66
+    ${output}       run  adb -s ${device} shell input keyevent 66 keyevent 66
 
 
 Custome keyboard back
     sleep  1s
-    ${output}       run  adb shell input keyevent 4
+    ${output}       run  adb -s ${device} shell input keyevent 4
 
 Get device name
     ${devices}=     run     adb devices
@@ -47,9 +55,15 @@ Get device name
 
 Custome scroll down
     [Arguments]     ${dy}=10
-    ${output}=      run     adb shell input swipe 0 220 0 650 100
+    ${output}=      run     adb -s ${device} shell input swipe 24 682 20 202 100
 
 Custome scroll up
-    [Arguments]     ${dy}=10
-    ${output}=      run     adb shell input swipe 0 650 0 220 100
+    [Arguments]     ${dy}=-10
+    ${output}=      run     adb -s ${device} shell input swipe 24 202 20 682 100
 
+String to comparable
+    [Arguments]    ${str}
+    ${result}=        Convert To Lowercase    ${str}
+    ${result}=        Replace String Using Regexp    ${result}    \\s        \
+    ${result}=        Replace String Using Regexp    ${result}    [^a-zA-Z\\d\\s:]        \
+    Return From Keyword    ${result}

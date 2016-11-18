@@ -1,0 +1,27 @@
+1- Why do I need to log with an admin login/password and for which actions?
+
+Admin login/password provides extra security to access Flybox's advanced features.
+
+Specific information, specific functions like settings and Wi-Fi network activation will be exclusively available to the administrator thanks to theses credentials.
+
+2- How can I see Wi-Fi credentials?
+
+You can find your Wi-Fi credentials on the back of your Flybox or in the dashboard of the application.
+
+3- How can I share my Wi-Fi connexion?
+
+You can share your Wi-Fi credentials with trusted people so they can connect to the Airbox anytime it is switched on directly from the dashboard of the application.
+
+4- What actions are available for other users connected to Flybox's Wi-Fi networks?
+
+All users connected to the Flybox can have access to the application as guests. Advanced features like settings and Wi-Fi network management are protected with specific login and password.
+
+5- How can I modify device default settings, Wi-Fi credential and consumption thresholds?
+
+You should be connected with admin login/password to modify default settings. Then you can modify settings in the settings corner of the application.
+
+6- Why Flybox receives messages ?
+
+Flybox can receive SMS messages to its SIM card phone number. This messages can come from anyone knowing the number but will mainly come from your operator to provide you with information and alert messages (like consumption tracking and bill shock).
+
+You can read and answer your messages received in your Flybox in the application.

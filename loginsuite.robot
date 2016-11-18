@@ -4,11 +4,11 @@ Library     String
 Library     AppiumLibrary
 Resource    repository.robot
 Resource    CommonKWRds.robot
-Suite Setup  Launch air box App
-Suite Teardown  Close air box App
+Test Setup             Launch air box App
+Test Teardown          Close air box App
 
 *** Variables ***
-
+${loginasguestbtn}		xpath=//*[contains(@resource-id,'btn_continue_as_guest')]
 *** Test Cases ***
 Login Failed
     Do Login  WrongPass     Wrong credentials.
