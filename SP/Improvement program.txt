@@ -1,0 +1,4 @@
+Mi Flybox collects information on the use of the application and sends us such information for statistical analysis to further improve the service provided to you.
+The collection of such data also allows us to improve the relevance of the notification messages sent by the service. All collected information is completely anonymous and is not associated with the user.
+Such information is collected and processed in compliance with applicable laws. It will not be used for any other purposes than improving the service and the relevance of the notification messages.
+Any personal data are NOT collected. You can disable, at any time, collecting information.

@@ -1,0 +1,42 @@
+1. Pourquoi dois-je me connecter avec un identifiant/mot de passe administrateur et pour quelles actions ?
+
+L’identifiant/mot de passe administrateur fournit un niveau de sécurité supplémentaire pour accéder aux fonctions avancées de l’Airbox.
+
+Les informations spécifiques et les fonctions telles que les paramètres, rediriger des messages et activation du réseau Wi-Fi seront exclusivement disponibles pour l’administrateur grâce à ses identifiants.
+
+2. Comment puis-je voir mes identifiants WiFi ?
+
+Vos identifiants WiFi sont disponible sur l’application.
+
+3. Comment puis-je partager ma connexion WiFi?
+
+Il y a deux possibilités distinctes :
+
+- Vous pouvez partager vos identifiants WiFi avec des personnes de confiance de façon à ce qu’ils puissent se connecter à l’Airbox lorsqu’elle est allumée depuis l’application.
+
+- Vous pouvez aussi activer le réseau d’invités Wi-Fi (si disponible) pour donner accès de façon temporaire aux personnes de votre choix. Pour ce faire, vous devez activer la fonction « réseau invité » sur le dashbaord de l’app. Ensuite, vous devez communiquer l’identifiant/mot de passe invité pour les autres utilisateurs. Vous pouvez désactiver le réseau d’invités WiFi à n’importe quel moment pour arrêter le partage de connexion avec les personnes connectées.
+
+4. Quelles sont les actions disponibles pour les autres utilisateurs connectés au réseau WiFi de l’Airbox?
+
+Tous les utilisateurs connectés à l’Airbox auront accès à l’application en tant qu’invités. Les fonctions avancées telles que les paramètres et la gestion du réseau Wi-Fi sont protégées avec un identifiant/mot de passe administrateur.
+
+5. Comment puis-je modifier les paramètres par défaut, les identifiants WiFi, le seuil de consommations et le mode de connexion ?
+
+Vous devez vous connecter avec votre identifiant/mot de passe administrateur pour modifier les paramètres par défaut. Les paramètres peuvent être modifiés dans l’onglet « paramètres ».
+
+6. Pourquoi l’Airbox reçoit des messages ?
+
+L’Airbox peut recevoir des messages sous forme de SMS adressés au numéro de la carte SIM. Ces messages peuvent provenir d’une personne qui connait le numéro de votre Airbox mais ils proviendront principalement de votre opérateur qui vous fournira des informations et des messages d’alerte (relatifs à votre consommation et facturation).
+Vous pouvez lire et répondre à vos messages reçus sur votre Airbox depuis l’application.
+
+7. Comment dois-je charger mon Airbox?
+
+Vous pouvez charger votre Airbox de deux façons :
+
+- Avec le câble USB directement connecté à votre ordinateur ou à un autre port USB
+
+- Avec le chargeur standard fourni avec l’Airbox
+
+8. Puis-je utiliser mon Airbox à l’étranger?
+
+Oui parce que l’Airbox est un dispositif multi-pays. Validez votre forfait data avec votre opérateur pour vous assurer que la fonctionnalité est disponible et vous informer des conditions de facturation en roaming. Les messages d’alerte ou information seront affichés sur l’application n’importe où vous vous trouverez.
