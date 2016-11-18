@@ -1,0 +1,43 @@
+1- Why do I need to log with an admin login/password and for which actions?
+
+Admin login/password provides extra security to access Airbox's advanced features.
+
+Specific information, specific functions like settings and Wi-Fi network activation will be exclusively available to the administrator thanks to theses credentials.
+
+2- How can I see Wi-Fi credentials?
+
+You can find your Wi-Fi credentials on the application.
+
+3- How can I share my Wi-Fi connexion?
+
+There are two different possibilities:
+
+1. You can share your WiFi credentials with trusted people so they can connect to the Airbox anytime it is switched on directly from the dashboard of the application.
+
+2. You can also activate a specific guest WiFi network (if available) to give temporary access to your guests. To do so you should activate "guest network" function on "dashboard" page. Then you should communicate guest login/password (if any) to guest users. You can deactivate guest WiFi network at any moment to stop sharing your connection with guest users.
+
+4- What actions are available for other users connected to Airbox's WiFi networks?
+
+
+All users connected to the Flybox can have access to the application as guests. Advanced features like settings and Wi-Fi network management are protected with specific login and password.
+
+5- How can I modify device default settings, Wi-Fi credential and consumption thresholds ?
+
+You should be connected with admin login/password to modify default settings. Then you can modify settings in the settings corner of the application.
+
+6- Why Airbox receives messages?
+
+Airbox can receive SMS messages to its SIM card phone number. This messages can come from anyone knowing the number but will mainly come from your operator to provide you with information and alert messages (like consumption tracking and bill shock).
+You can read and answer your messages received in your Airbox in the application.
+
+7- How do I charge my Airbox?
+
+You can charge your Airbox by two ways:
+
+- USB cable directly connected to your computer or any other USB port
+
+- Standard charger provided with the Airbox
+
+8- Can I use my Airbox in a foreign country?
+
+Yes because Airbox is a multi-country device. Check data plan with your provider to see if the function is available and roaming billing conditions. Alert message will be displayed on the application whenever you are in roaming.
